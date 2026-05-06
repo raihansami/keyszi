@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For U <3</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url('assets/images/key5.jpeg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+}
+
+.hero p {
+  max-width: 500px;
+  opacity: 0.75;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  text-decoration: none;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+}
+
+/* GALLERY */
+.gallery-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.gallery-slider img {
+  width: 100%;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  margin-top: 10%;
+}
+
+/* LETTER */
+.letter {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* MUSIC */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* MOBILE SWIPE */
+@media (max-width: 768px) {
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .gallery-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery-slider img {
+    min-width: 80%;
+    scroll-snap-align: center;
+  }
+
+  .gallery-slider::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Keysha Zahrani Rahma Putri</h1>
+  <p>
+    In every smile of yours, there's a morning greeting,
+Warming a long-awake heart,
+Your light illuminates my days,
+Making every second feel new.
+  </p>
+  <a href="#gallery" class="btn">Click</a>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="section">
+  <h2 class="title">My Beautiful Girl</h2>
+
+  <div class="gallery-slider">
+    <img src="assets/images/key1.jpeg">
+    <img src="assets/images/key2.jpeg">
+    <img src="assets/images/key7.jpeg">
+    <img src="assets/images/key3.jpeg">
+    <img src="assets/images/key4.jpeg">
+    <img src="assets/images/key6.jpeg">
+  </div>
+</div>
+
+<!-- LETTER -->
+<div class="section">
+  <h2 class="title">Poetry for You</h2>
+
+  <div class="letter-card">
+    <p>
+      I'm lost in your beautiful charm,
+Feeling a sincere and passionate love,
+Will you accompany my steps?
+Going through the day with one love. <br>
+Under the moon, I promise,
+To hold this feeling with all my heart,
+Nothing can change,
+A love that grows so beautifully. <br>
+With you, the world feels perfect,
+There's no need to search for meaning anymore,
+Because in your presence, I find everything,
+True love, within our souls.
+    </p>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="this.style.display='none'">
+  <img id="modal-img">
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="assets/music/lagu.mp3">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">Play Instrumental</button>
+
+<script>
+const images = document.querySelectorAll(".gallery-slider img");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+
+images.forEach(img => {
+  img.onclick = () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  };
+});
+
+const music = document.getElementById("music");
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) music.pause();
+  else music.play();
+  isPlaying = !isPlaying;
+}
+</script>
+
+</body>
+</html>
+
